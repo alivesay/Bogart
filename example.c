@@ -10,13 +10,13 @@ Bogart {
     };
     
     get("/create") {
-        redisCommand(_redisFd, "HSET User:%s %s %s", params("id"), "name", params("name"));
+        redisCommand(_redisCtx, "HSET User:%s %s %s", params("id"), "name", params("name"));
         body("User created.");
     };
 
     get("/show") {
-        redisReply * reply = redisCommand(_redisFd, "HGET User:%s %s", params("id"), "name");
-        view("index.cml", map("name", reply->reply));
+        redisReply * reply = redisCommand(_redisCtx, "HGET User:%s %s", params("id"), "name");
+        view("index.cml", map("name", reply->str));
     };
 
     Start(11000)

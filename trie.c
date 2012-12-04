@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <Block.h>
 
 struct _Trie {
     char state;

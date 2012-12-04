@@ -5,10 +5,6 @@
 
 #include "bogart.h"
 
-// hax!  libevent doesn't export evkeyvalq definition properly
-#include <sys/queue.h>
-TAILQ_HEAD (evkeyvalq, evkeyval);
-
 #define BOGART_NOT_FOUND_DEFAULT ^ void (Request * request, Response * response) {}
 
 
@@ -175,7 +171,7 @@ void request_handler(struct evhttp_request * ev_req, void * context) {
 
     gettimeofday(&t1, NULL);
     timersub(&t1, &t0, &tr);
-    printf("Request processed in: %ld secs, %d usecs\n", tr.tv_sec, tr.tv_usec);
+    printf("Request processed in: %ld secs, %ld usecs\n", tr.tv_sec, tr.tv_usec);
 }
 
 void setupBogart(BogartContext * bogart) {

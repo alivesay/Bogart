@@ -101,5 +101,5 @@ Map modelGet(RedisModel, char **, char *);
 */
 
 #define UseRedis                                      \
-    int _redisFd;                                     \
-    redisConnect(&_redisFd, "127.0.0.1", 6379)
+    redisContext *_redisCtx = redisConnect("127.0.0.1", 6379)
+
