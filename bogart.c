@@ -77,6 +77,7 @@ Route * match_route(Route * route, Request * req) {
 Route * nextRoute(char * pattern, enum evhttp_cmd_type type, BogartContext * bogart) {
     Route * new_route = (Route *) malloc(sizeof(Route));
     new_route->pattern = pattern;
+    new_route->type = type;
     if(bogart->route) {
         Route * cursor = bogart->route;
         while(cursor->next)
